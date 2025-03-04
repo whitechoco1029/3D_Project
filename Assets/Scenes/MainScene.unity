@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 23.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -181,13 +181,111 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1956969354}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 140882297}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 140882296}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 140882295}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 140882294}
   m_SourcePrefab: {fileID: 100100000, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
 --- !u!4 &140882292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
   m_PrefabInstance: {fileID: 140882291}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &140882293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8739604ff156c91408e3f6352de03dbc, type: 3}
+  m_PrefabInstance: {fileID: 140882291}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &140882294
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140882293}
+  serializedVersion: 4
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &140882295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140882293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02ce913f12082840aa266a52e6d4c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &140882296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140882293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5c7f26e6858d4418f47e4ae76d76a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &140882297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140882293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: 0}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &673262299
 PrefabInstance:
   m_ObjectHideFlags: 0
