@@ -462,16 +462,16 @@ namespace TCM {
 				if(chestPiece.name == "Top"){
 					foreach(Transform piece in chestPiece){
 						if(piece.name != "Lid"){
-							piece.gameObject.renderer.material = topBorder;
+							piece.gameObject.GetComponent<Renderer>().material = topBorder;
 						} else {
-								piece.gameObject.renderer.material = topBase;
+								piece.gameObject.GetComponent<Renderer>().material = topBase;
 						}
 					}
 				}
 				if(chestPiece.name == "Bottom"){
-					chestPiece.gameObject.renderer.material = bottomBase;
+					chestPiece.gameObject.GetComponent<Renderer>().material = bottomBase;
 					foreach(Transform piece in chestPiece){
-						piece.gameObject.renderer.material = bottomBorder;
+						piece.gameObject.GetComponent<Renderer>().material = bottomBorder;
 					}
 				}
 			}
