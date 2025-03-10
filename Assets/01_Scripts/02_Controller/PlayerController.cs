@@ -5,22 +5,25 @@ public class PlayerController : MonoBehaviour
 {
     [Header("이동 설정")]
     public float moveSpeed = 5f; // 이동 속도
-    private Vector2 curMovementInput; // 현재 이동 입력 값
+    private Vector2 curMovementInput; // 현재 이동 입력 값 저장
 
     [Header("점프 설정")]
-    public float jumpForce = 5f; // 점프 힘
-    public float groundCheckDistance = 0.3f;  // 바닥 체크 거리
-    public LayerMask groundLayer;  // 바닥 레이어 지정
+    public float jumpForce = 120f; // 점프 힘
+    public float groundCheckDistance = 1.1f; // 바닥 체크 거리
+    public LayerMask groundLayer; // 바닥 감지 레이어
     private bool isGrounded = false; // 바닥 체크
-    private bool isJumping = false; // 점프 중인지 체크
 
     [Header("시점 설정")]
-    public Transform cameraContainer; // 카메라 컨테이너
+    public Transform cameraContainer; // 카메라 컨테이너 (1인칭/3인칭 지원)
     public float minLook = -60f;
     public float maxLook = 60f;
-    public float lookSensitivity = 2f;
+    public float lookSensitivity = 0.1f;
     private float camCurX;
     private Vector2 mouseDelta;
+
+    [Header("인벤토리 설정")]
+    public GameObject inventoryUI; // 인벤토리 UI 패널 (SetActive로 활성화/비활성화)
+    private bool isInventoryOpen = false;
 
     private Rigidbody _rigidbody;
 
@@ -40,7 +43,6 @@ public class PlayerController : MonoBehaviour
     {
         Move(); // 물리 기반 이동 처리
         CheckGrounded(); // 바닥 감지
-        ApplyGravity(); // 중력 보정
     }
 
     private void LateUpdate()
@@ -51,14 +53,18 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
+        // 현재 카메라의 정면 방향을 기준으로 이동 방향 설정
         Vector3 forward = cameraContainer.forward;
         Vector3 right = cameraContainer.right;
 
-        forward.y = 0; // Y축 제거하여 회전 시 이동이 틀어지는 문제 해결
+        // 위/아래 방향을 제거하여 수평 이동만 가능하도록 설정
+        forward.y = 0;
         right.y = 0;
 
+        // 이동 벡터 계산 (카메라 방향을 기준으로 이동)
         Vector3 moveDirection = (forward * curMovementInput.y + right * curMovementInput.x).normalized;
 
+        // 최종 이동 속도 적용
         _rigidbody.velocity = new Vector3(moveDirection.x * moveSpeed, _rigidbody.velocity.y, moveDirection.z * moveSpeed);
     }
 
@@ -93,9 +99,17 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && isGrounded)
         {
-            isJumping = true;
-            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z); // 기존 Y속도 초기화
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z); // 기존 Y축 속도 초기화
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    public void OnToggleInventory(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started) // 키가 눌렸을 때 실행
+        {
+            isInventoryOpen = !isInventoryOpen;
+            inventoryUI.SetActive(isInventoryOpen);
         }
     }
 
@@ -106,19 +120,5 @@ public class PlayerController : MonoBehaviour
         Vector3 sphereOrigin = transform.position + Vector3.up * 0.1f; // 캐릭터 살짝 위에서 시작
 
         isGrounded = Physics.SphereCast(sphereOrigin, sphereRadius, Vector3.down, out _, sphereDistance, groundLayer);
-
-        if (isGrounded && isJumping)
-        {
-            isJumping = false;
-            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z); // 착지 시 속도 초기화
-        }
-    }
-
-    void ApplyGravity()
-    {
-        if (!isGrounded)
-        {
-            _rigidbody.velocity += Vector3.down * 5f * Time.deltaTime; // 추가 중력 적용
-        }
     }
 }
