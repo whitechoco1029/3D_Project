@@ -113,6 +113,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f); // 근처 아이템 감지
+            foreach (Collider col in hitColliders)
+            {
+                ItemPickup item = col.GetComponent<ItemPickup>();
+                if (item != null)
+                {
+                    item.OnInteract(context);
+                    break; // 첫 번째 감지된 아이템만 상호작용
+                }
+            }
+        }
+    }
+
     void CheckGrounded()
     {
         float sphereRadius = 0.3f; // 감지 반경
