@@ -22,22 +22,6 @@ Canvas → InventoryUI를 활용한 인벤토리 창
 ItemSlot 프리팹을 동적으로 생성하여 아이템 UI 자동 추가
 ItemSlot.cs에서 SetItem() 함수를 통해 아이템 정보 UI에 반영
 체력 시스템(Scrollbar.size 기반)과 연동하여 체력바 업데이트 기능 구현
-개발 과정
-1. 초기 개발
-
-Unity 2D 기반으로 시작하여 점차 3D로 전환
-플래피 버드, 도둑질(스텔스) 미니게임 등 미니게임 개발 경험 포함
-2. Unity 3D 기반으로 전환
-
-Rigidbody 기반의 이동 시스템 구현
-카메라 이동 및 회전 기능 추가
-Quaternion을 활용하여 Gimbal Lock 문제 해결
-3. 아이템 및 인벤토리 시스템 구축
-
-ScriptableObject를 활용하여 아이템을 확장 가능하도록 설계
-InventoryManager를 싱글톤 패턴으로 관리하여 아이템 데이터 일관성 유지
-BaseItem을 만들고, WeaponItem, ConsumableItem 등을 상속하여 객체 지향적 구조 적용
-4. UI 및 인터랙션 시스템 추가
 
 E 키를 누르면 아이템 습득 가능
 Tab 키로 인벤토리 UI 열고 닫기
