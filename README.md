@@ -10,16 +10,8 @@ Input System을 활용하여 키보드/마우스 입력 처리
 CameraLook() 함수 적용으로 마우스를 활용한 부드러운 카메라 회전
 Jump() 기능을 추가하여 중력과 지형에 영향을 받는 점프 시스템 구현
 2. 인벤토리 시스템
-SetActive()를 활용한 인벤토리 UI 열기/닫기 (Tab 키)
-InventoryManager를 싱글톤 패턴(Instance)으로 구현하여 전역 관리 가능
-ItemData (ScriptableObject)를 이용한 확장 가능한 아이템 데이터 관리
-아이템 습득 후 UI 업데이트 및 리스트 관리
 *미구현*
 3. 아이템 시스템
-BaseItem 클래스를 만들어 다형성 적용 (WeaponItem, ConsumableItem 등 상속)
-ItemPickup 스크립트에서 Trigger Collider를 활용하여 습득 가능
-OnInteract()를 InputAction.CallbackContext에 적용하여 인터랙션 시스템 개선
-Physics.Raycast()를 활용한 필드 내 아이템 감지 및 습득
 *미구현*
 4. 오브젝트 물리 시스템
 Rigidbody.constraints = FreezeRotationX | FreezeRotationZ를 적용하여 불필요한 회전 방지
